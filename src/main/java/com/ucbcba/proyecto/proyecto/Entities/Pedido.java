@@ -16,8 +16,6 @@ public class  Pedido {
     private  int id;
     @NotNull
     private int precio;
-
-    private String direccion;
     @NotNull
     @ManyToOne
     private User user;
@@ -27,8 +25,20 @@ public class  Pedido {
     @NotNull
     @OneToMany(mappedBy = "pedido")
     private Set<Opcion_Pedido> opcion_pedidos = new HashSet<>();
-
+    @ManyToMany
+    @JoinTable(name = "status_pedido", joinColumns = @JoinColumn(name = "pedido_id"), inverseJoinColumns = @JoinColumn(name = "status_id"))
+    private Set<Status> statuses;
     private boolean Estado;
+    private String direccion;
+
+    public Set<Status> getStatuses() {
+        return statuses;
+    }
+
+    public void setStatuses(Set<Status> statuses) {
+        this.statuses = statuses;
+    }
+
 
     public Pedido(){
         Estado=true;

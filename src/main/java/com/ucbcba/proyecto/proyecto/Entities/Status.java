@@ -1,12 +1,15 @@
 package com.ucbcba.proyecto.proyecto.Entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name="status")
 public class Status {
     private Long id;
     private String name;
+    private Set<Pedido> pedidos;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Long getId() {
@@ -25,5 +28,12 @@ public class Status {
         this.name = name;
     }
 
-    //falta relacionar con pedido en una relacion many to many
+    @ManyToMany(mappedBy = "statuses")
+    public Set<Pedido> getPedidos() {
+        return pedidos;
+    }
+
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 }
