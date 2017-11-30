@@ -19,9 +19,14 @@
     <div class="dropdown">
         <button class="dropbtn" th:text="${user.name}"></button>
         <div class="dropdown-content">
-            <div th:each="role : ${user.roles}" th:if="${role.name} == 'ADMIN'">
-                <a class="btn" href="/admin/empresas">Administrar</a>
-                <a class="btn" href="/admin/listar">Ver Usuarios</a>
+            <div th:each="role : ${user.roles}" >
+                <div th:if="${role.name} == 'ADMIN'">
+                    <a class="btn" href="/admin/empresas">Administrar</a>
+                    <a class="btn" href="/admin/listar">Ver Usuarios</a>
+                </div>
+                <div th:if="${role.name} == 'AdminEmp'">
+                    <a class="btn" href="/AdminEmp/pedidosEmpresa">Pedidos</a>
+                </div>
             </div>
             <a class="btn" href="/misPedidos">Mis Pedidos</a>
             <a class="btn" href="/logout">logout</a>

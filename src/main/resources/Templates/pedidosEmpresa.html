@@ -2,8 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org" >
 <head lang="en">
-    <title>Pedidos de usuario</title>
-    <link href="../static/css/pedidosUsuario.css" th:href="@{/css/pedidosUsuario.css}" rel="stylesheet" />
+    <title>Pedidos de una Empresa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -30,8 +29,8 @@
 </div>
 
 <div class="container">
-    <h2 class="title">Mis Pedidos</h2>
-    <div th:each="pedido : ${user.pedidos}">
+    <h2 class="title">Pedidos</h2>
+    <div th:each="pedido : ${empresa.pedidos}">
         <div class="group" align="center" color="white">
             <div class="group" th:each="empresa : ${pedido.empresa}">
                 <h4 class="dataEm" th:text="${empresa.nombre}"></h4>
@@ -48,6 +47,5 @@
         </div>
     </div>
 </div>
-
 </body>
 </html>

@@ -13,30 +13,24 @@ public class Empresa {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idEmpresa;
-
     @NotNull
     @Size(min = 1, max = 45, message = "Debe tener entre 1 y 45 caracteres")
     private String nombre;
-
     @NotNull
     @Size(min = 1, max = 45, message = "Debe tener entre 1 y 45 caracteres")
     private String direccion;
-
     @Range(min = 0,max = 5,message = "El valor debe estar entre 1 y 5")
     private int calificacion;
-
     @NotNull
     private int telefono;
-
     private String image;
-
-
     @NotNull
     @Size(min = 1, max = 45, message = "Debe tener entre 1 y 45 caracteres")
     private String descripcion;
-
     @OneToMany(mappedBy = "empresa")
     private Set<Option> Options;
+    @OneToMany(mappedBy = "empresa")
+    private Set<Pedido> Pedidos;
 
     public Set<Option> getOptions() {
         return Options;
