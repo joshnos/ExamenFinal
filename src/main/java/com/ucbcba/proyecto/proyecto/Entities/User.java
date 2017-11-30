@@ -21,6 +21,7 @@ public class User {
     private String name;
     private Set<Role> roles;
     private Ciudad ciudad;
+    private Set<Pedido> pedidos;
 
     @ManyToOne
     @JoinColumn(name = "IdCiudad")
@@ -85,5 +86,12 @@ public class User {
         this.name = name;
     }
 
+    @OneToMany(mappedBy = "user")
+    public Set<Pedido> getPedidos() {
+        return pedidos;
+    }
 
+    public void setPedidos(Set<Pedido> pedidos) {
+        this.pedidos = pedidos;
+    }
 }

@@ -4,15 +4,15 @@ package com.ucbcba.proyecto.proyecto.Controllers;
 
 import com.ucbcba.proyecto.proyecto.Entities.Role;
 import com.ucbcba.proyecto.proyecto.Entities.User;
-import com.ucbcba.proyecto.proyecto.Services.CiudadService;
-import com.ucbcba.proyecto.proyecto.Services.RolesService;
-import com.ucbcba.proyecto.proyecto.Services.SecurityService;
-import com.ucbcba.proyecto.proyecto.Services.UserService;
+import com.ucbcba.proyecto.proyecto.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -30,6 +30,7 @@ public class UserController {
 
     private RolesService rolesService;
     private CiudadService ciudadService;
+    private PedidoService pedidoService;
 
     @Autowired
     private void setCiudadService(CiudadService ciudadService){
@@ -37,6 +38,8 @@ public class UserController {
     }
     @Autowired
     private void setRolesService(RolesService rolesService){this.rolesService=rolesService;}
+    @Autowired
+    private void setPedidoService(PedidoService pedidoService){this.pedidoService=pedidoService;}
     //@Autowired
     //private UserValidator userValidator;
 
@@ -77,4 +80,11 @@ public class UserController {
         return "login";
     }
 
+    @RequestMapping(value = "/misPedidos",method = RequestMethod.GET)
+    public String mostrarPedidos(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        model.addAttribute("user",userService.findByEmail(name));
+        return "pedidosUsuario";
+    }
 }

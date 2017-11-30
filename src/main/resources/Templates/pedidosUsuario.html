@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org" >
+<head lang="en">
+    <title>Pedidos de usuario</title>
+    <link href="../static/css/pedidosUsuario.css" th:href="@{/css/pedidosUsuario.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="navbar">
+    <a class="navbartitle">Pizza Hunter</a>
+    <div class="dropdown">
+        <button class="dropbtn" th:text="${user.name}"></button>
+        <div class="dropdown-content">
+            <div th:each="role : ${user.roles}" th:if="${role.name} == 'ADMIN'">
+                <a class="btn" href="/admin/empresas">Administrar</a>
+                <a class="btn" href="/admin/listar">Ver Usuarios</a>
+            </div>
+            <a class="btn" href="/misPedidos">Mis Pedidos</a>
+            <a class="btn" href="/logout">logout</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 class="title">Mis Pedidos</h2>
+    <div th:each="pedido : ${user.pedidos}">
+        <div class="group" align="center" color="white">
+            <div class="group" th:each="empresa : ${pedido.empresa}">
+                <h4 class="dataEm" th:text="${empresa.nombre}"></h4>
+                <p class="dataEm" th:text="${empresa.descripcion}"></p>
+            </div>
+            <div class="inf" th:each="op : ${pedido.opcion_pedidos}">
+                <div class="data"><label th:text="${op.option.name}">Opcion:</label></div>
+                <div class="price"><label th:text="${op.option.price + 'Bs' }">P/u:</label></div>
+            </div>
+            <div class="Total">
+                <label class="total" th:text="${pedido.precio + ' Bs'}">Total:</label>
+            </div>
+            <div class="data" th:each="estado : ${pedido.statuses}"><label class="estado" th:text="${estado.name}">Estado: </label></div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
