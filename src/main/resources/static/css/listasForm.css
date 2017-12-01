@@ -71,3 +71,10 @@ label, span{
     padding: 12px 20px;
     margin: 8px 6%;
 }
+
+.select{
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 6%;
+    color:white;
+}

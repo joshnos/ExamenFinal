@@ -25,20 +25,20 @@ public class  Pedido {
     @NotNull
     @OneToMany(mappedBy = "pedido")
     private Set<Opcion_Pedido> opcion_pedidos = new HashSet<>();
-    @ManyToMany
-    @JoinTable(name = "status_pedido", joinColumns = @JoinColumn(name = "pedido_id"), inverseJoinColumns = @JoinColumn(name = "status_id"))
-    private Set<Status> statuses;
+
     private boolean Estado;
     private String direccion;
 
-    public Set<Status> getStatuses() {
-        return statuses;
+    @ManyToOne
+    private Status status;
+
+    public Status getStatus() {
+        return status;
     }
 
-    public void setStatuses(Set<Status> statuses) {
-        this.statuses = statuses;
+    public void setStatus(Status status) {
+        this.status = status;
     }
-
 
     public Pedido(){
         Estado=true;
@@ -99,4 +99,5 @@ public class  Pedido {
     public Set<Opcion_Pedido> getOpcion_pedidos() {
         return opcion_pedidos;
     }
+
 }

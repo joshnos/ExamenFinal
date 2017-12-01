@@ -21,6 +21,7 @@ public class PedidoController {
     private PedidoService pedidoService;
     private Opcion_PedidoService opcion_pedidoService;
     private UserService userService;
+    private StatusService statusService;
     @Autowired
     public void setUserService(UserService userService){
         this.userService=userService;
@@ -33,7 +34,8 @@ public class PedidoController {
     public void setOptionService(OptionService optionService){this.optionService = optionService;}
     @Autowired
     public void setOpcion_pedidoService(Opcion_PedidoService opcion_pedidoService){this.opcion_pedidoService = opcion_pedidoService;}
-
+    @Autowired
+    public void setStatusService(StatusService statusService){this.statusService=statusService;}
 
     @RequestMapping(value="/pedido/{id}", method = RequestMethod.GET)
     public String Pedir(@PathVariable Integer id, Model model){
@@ -51,6 +53,11 @@ public class PedidoController {
         opcion_pedido.setOption(optionService.getOptionById(Id_Option));
         if(Id_Pedido==0){
             Pedido pedido = new Pedido();
+            for (Status status: statusService.listAllOptions()) {
+                if(status.getId()==1) {
+                    pedido.setStatus(status);
+                }
+            }
             opcion_pedido.setCantidad(1);
             Authentication auth = SecurityContextHolder.getContext().getAuthentication();
             String Email = auth.getName(); //get logged in username
@@ -233,4 +240,20 @@ public class PedidoController {
         }
         return "redirect:/continuar";
     }
+
+
+    @RequestMapping(value = "/cambiar/{id}",method = RequestMethod.GET)
+    public String cambiaEstado(@PathVariable Integer id, Model model){
+        model.addAttribute("pedido",pedidoService.getPedidoById(id));
+        model.addAttribute("statuses",statusService.listAllOptions());
+        return "cambiarEstado";
+    }
+    @RequestMapping(value = "/cambiar/new/{id}",method = RequestMethod.POST)
+    public String Estadochange(@ModelAttribute("status")Integer statusId,@PathVariable Integer id, Model model){
+        Pedido pedido=pedidoService.getPedidoById(id);
+        pedido.setStatus(statusService.getStatusById(statusId));
+        pedidoService.savePedido(pedido);
+        return "redirect:/cambiar/"+id;
+    }
+
 }

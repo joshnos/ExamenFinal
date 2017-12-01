@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Empresa</title>
+    <link href="../static/css/listasForm.css" th:href="@{/css/listasForm.css}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="select">
+
+
+    <form class="form-horizontal" th:action="${'/cambiar/new/'+ pedido.id}" method="post">
+
+    <div class="group" align="center" color="white">
+        <div class="group" th:each="empresa : ${pedido.empresa}">
+            <h4 class="dataEm" th:text="${empresa.nombre}"></h4>
+            <p class="dataEm" th:text="${empresa.descripcion}"></p>
+        </div>
+        <div class="inf" th:each="op : ${pedido.opcion_pedidos}">
+            <div class="data"><label th:text="${op.option.name}">Opcion:</label></div>
+            <div class="price"><label th:text="${op.option.price + 'Bs' }">P/u:</label></div>
+        </div>
+        <div class="Total">
+            <label class="total" th:text="${pedido.precio + ' Bs'}">Total:</label>
+        </div>
+        <label>Estado:</label>
+        <select name="status">
+            <option th:each="state : ${statuses}" th:value="${state.id}" th:text="${state.name}"></option>
+        </select>
+    </div>
+        <div class="row">
+            <button type="submit" class="btn btn-default">Submit</button>
+        </div>
+    </form>
+
+
+</div>
+
+</body>
+</html>
