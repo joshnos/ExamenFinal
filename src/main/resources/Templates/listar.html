@@ -22,12 +22,12 @@ background-size:100% 100%; background-attachment: fixed; background-possition: c
     </div>
         <button type="Submit">FINISH</button>
     </form>
-    <form th:each="role : ${user.roles}" th:if ="${role} == 'EMP'" th:action="@{/admin/listar/set}" method="post">
+    <!--<form th:each="role : ${user.roles}" th:if ="${role} == 'EMP'" th:action="@{/admin/listar/set}" method="post">
         <select th:field="*{miEmpresa}">
             <option th:each="empresa : ${empresass}" th:value="${empresa.id}" th:text="${empresa.nombre}"></option>
         </select>
         <button type="Submit">FINISH x 2</button>
-    </form>
+    </form> -->
 </div>
 
 </body>

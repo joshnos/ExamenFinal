@@ -2,6 +2,7 @@ package com.ucbcba.proyecto.proyecto.Controllers;
 
 import com.ucbcba.proyecto.proyecto.Entities.Empresa;
 import com.ucbcba.proyecto.proyecto.Services.EmpresaService;
+import com.ucbcba.proyecto.proyecto.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,13 +18,18 @@ import javax.validation.Valid;
 public class EmpresaController {
 
     private EmpresaService empresaService;
+    private UserService userService;
 
     @Autowired
     public void setEmpresaService(EmpresaService empresaService){this.empresaService = empresaService;}
 
+    @Autowired
+    public void setUserService(UserService userService){this.userService=userService;}
+
     @RequestMapping(value = "/admin/empresa", method = RequestMethod.POST)
     public String save(@Valid Empresa empresa, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
+            model.addAttribute("users",userService.listAllUser());
             return "empresaForm";
         }
         empresaService.saveEmpresa(empresa);
@@ -39,6 +45,7 @@ public class EmpresaController {
     @RequestMapping(value = "/admin/empresa/new",method = RequestMethod.GET)
     public String newEmpresa(Model model){
         model.addAttribute("empresa",new Empresa());
+        model.addAttribute("users",userService.listAllUser());
         return "empresaForm";
     }
 
@@ -57,6 +64,7 @@ public class EmpresaController {
     @RequestMapping(value = "/admin/empresa/editar/{id}",method = RequestMethod.GET)
     public String editarEmpresa(@PathVariable Integer id, Model model){
         model.addAttribute("empresa",empresaService.getEmpresaById(id));
+        model.addAttribute("users",userService.listAllUser());
         return "empresaForm";
     }
 
