@@ -30,7 +30,7 @@
 
 <div class="container">
     <h2 class="title">Pedidos</h2>
-    <div th:each="pedido : ${empresa.pedidos}">
+    <div th:each="pedido : ${pedidos}">
         <div class="group" align="center" color="white">
             <div class="group" th:each="empresa : ${pedido.empresa}">
                 <h4 class="dataEm" th:text="${empresa.nombre}"></h4>

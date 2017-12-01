@@ -25,7 +25,6 @@ public class  Pedido {
     @NotNull
     @OneToMany(mappedBy = "pedido")
     private Set<Opcion_Pedido> opcion_pedidos = new HashSet<>();
-
     private boolean Estado;
     private String direccion;
 

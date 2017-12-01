@@ -31,12 +31,15 @@ public class UserController {
     @Autowired
     private SecurityService securityService;
 
+    private StatusService statusService;
     private RolesService rolesService;
     private CiudadService ciudadService;
     private PedidoService pedidoService;
     private EmpresaService empresaService;
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private void setStatusService(StatusService statusService){this.statusService=statusService;}
     @Autowired
     private void setCiudadService(CiudadService ciudadService){
         this.ciudadService=ciudadService;
@@ -118,5 +121,23 @@ public class UserController {
         String name = auth.getName();
         model.addAttribute("user",userService.findByEmail(name));
         return "pedidosUsuario";
+    }
+
+    @RequestMapping(value = "/AdminEmp/pedidosEmpresa",method = RequestMethod.GET)
+    public String controlarPedidos(Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        User user = userService.findByEmail(name);
+        model.addAttribute("user",user);
+        Empresa empresaMia = new Empresa();
+        for(Empresa empresa:empresaService.listAllEmpresas()){
+            if(empresa.getUser()==user){
+                empresaMia=empresa;
+            }
+        }
+        model.addAttribute("pedidos",empresaMia.getPedidos());
+        model.addAttribute("empresa",empresaMia);
+        model.addAttribute("statuses",statusService.listAllOptions());
+        return "CambiarEstado";
     }
 }

@@ -36,6 +36,14 @@ public class Empresa {
     @ManyToOne
     private User user;
 
+    public Set<Pedido> getPedidos() {
+        return Pedidos;
+    }
+
+    public void setPedidos(Set<Pedido> pedidos) {
+        Pedidos = pedidos;
+    }
+
     public User getUser() {
         return user;
     }

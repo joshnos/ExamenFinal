@@ -241,19 +241,12 @@ public class PedidoController {
         return "redirect:/continuar";
     }
 
-
-    @RequestMapping(value = "/cambiar/{id}",method = RequestMethod.GET)
-    public String cambiaEstado(@PathVariable Integer id, Model model){
-        model.addAttribute("pedido",pedidoService.getPedidoById(id));
-        model.addAttribute("statuses",statusService.listAllOptions());
-        return "cambiarEstado";
-    }
     @RequestMapping(value = "/cambiar/new/{id}",method = RequestMethod.POST)
     public String Estadochange(@ModelAttribute("status")Integer statusId,@PathVariable Integer id, Model model){
         Pedido pedido=pedidoService.getPedidoById(id);
         pedido.setStatus(statusService.getStatusById(statusId));
         pedidoService.savePedido(pedido);
-        return "redirect:/cambiar/"+id;
+        return "redirect:/AdminEmp/pedidosEmpresa";
     }
 
 }

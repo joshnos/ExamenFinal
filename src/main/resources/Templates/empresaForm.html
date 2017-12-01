@@ -35,7 +35,7 @@
                 <div class="select">
                     <label>Administrador:</label>
                     <select th:field="*{user}">
-                        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.email}"></option>
+                        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"></option>
                     </select>
                 </div>
                 <div class="form-group">

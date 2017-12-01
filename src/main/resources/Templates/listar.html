@@ -15,12 +15,13 @@ background-size:100% 100%; background-attachment: fixed; background-possition: c
     <div><font color="white" size="4" th:text="${'          Nombre: ' + user.name}"></font></div>
         <input type="hidden"  name ="newUser" th:value = "${user.id}"/>
     <div class="select">
-        <label>rol:</label>
+        <label color="white">Rol:</label>
         <select name="CambiarRol">
+            <option th:each="role : ${user.roles}" th:value="${role.id}" th:text="${role.name}"></option>
             <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
         </select>
+        <button type="Submit">Cambiar</button>
     </div>
-        <button type="Submit">FINISH</button>
     </form>
     <!--<form th:each="role : ${user.roles}" th:if ="${role} == 'EMP'" th:action="@{/admin/listar/set}" method="post">
         <select th:field="*{miEmpresa}">
