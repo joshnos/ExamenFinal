@@ -44,7 +44,7 @@
             <div class="Total">
                 <label class="total" th:text="${'Total: ' + pedido.precio + ' Bs'}">Total:</label>
             </div>
-            <div class="data" th:each="estado : ${'Estado: ' + pedido.status}"><label class="estado" th:text="${estado.name}">Estado: </label></div>
+            <div class="data" th:each="estado : ${pedido.status}"><label class="estado" th:text="${'Estado: ' +estado.name}">Estado: </label></div>
         </div>
     </div>
 </div>

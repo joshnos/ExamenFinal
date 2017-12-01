@@ -16,9 +16,8 @@ public class Empresa {
     @NotNull
     @Size(min = 1, max = 45, message = "Debe tener entre 1 y 45 caracteres")
     private String nombre;
-    @NotNull
-    @Size(min = 1, max = 45, message = "Debe tener entre 1 y 45 caracteres")
-    private String direccion;
+    @ManyToOne
+    private Direccion direccion;
     @Range(min = 0,max = 5,message = "El valor debe estar entre 1 y 5")
     private int calificacion;
     @NotNull
@@ -76,10 +75,6 @@ public class Empresa {
         return descripcion;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -88,9 +83,6 @@ public class Empresa {
         this.descripcion = descripcion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
 
     public void setIdEmpresa(Integer idEmpresa) {
         this.idEmpresa = idEmpresa;
@@ -114,5 +106,13 @@ public class Empresa {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
+    }
+
+    public Direccion getDireccion() {
+        return direccion;
     }
 }
