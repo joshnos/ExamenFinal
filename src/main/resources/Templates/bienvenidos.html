@@ -25,7 +25,7 @@
     <div class="dropdown">
         <button class="dropbtn" th:if="${email} != 'anonymousUser'" th:text="${name}"></button>
         <div class="dropdown-content">
-            <div th:each="role : ${user.roles}" >
+            <div th:each="role : ${roles}" >
                 <div th:if="${role.name} == 'ADMIN'">
                     <a class="btn" href="/admin/empresas">Administrar</a>
                     <a class="btn" href="/admin/listar">Ver Usuarios</a>

@@ -7,17 +7,17 @@ import java.util.Set;
 @Table(name = "role")
 public class Role {
 
-    private Long id;
+    private Integer id;
     private String name;
     private Set<User> users;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

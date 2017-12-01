@@ -32,6 +32,18 @@ public class Empresa {
     @OneToMany(mappedBy = "empresa")
     private Set<Pedido> Pedidos;
 
+    @NotNull
+    @ManyToOne
+    private User user;
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     public Set<Option> getOptions() {
         return Options;
     }

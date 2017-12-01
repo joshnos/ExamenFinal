@@ -14,7 +14,7 @@ import java.util.Set;
 @Table(name = "user")
 public class User {
 
-    private Long id;
+    private Integer id;
     private String email;
     private String password;
     private String passwordConfirm;
@@ -35,11 +35,11 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    public Long getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

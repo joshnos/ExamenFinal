@@ -2,8 +2,10 @@ package com.ucbcba.proyecto.proyecto.Controllers;
 
 
 
+import com.ucbcba.proyecto.proyecto.Entities.Empresa;
 import com.ucbcba.proyecto.proyecto.Entities.Role;
 import com.ucbcba.proyecto.proyecto.Entities.User;
+import com.ucbcba.proyecto.proyecto.Repositories.UserRepository;
 import com.ucbcba.proyecto.proyecto.Services.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.jws.soap.SOAPBinding;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Controller
@@ -31,7 +34,9 @@ public class UserController {
     private RolesService rolesService;
     private CiudadService ciudadService;
     private PedidoService pedidoService;
-
+    private EmpresaService empresaService;
+    @Autowired
+    private UserRepository userRepository;
     @Autowired
     private void setCiudadService(CiudadService ciudadService){
         this.ciudadService=ciudadService;
@@ -40,6 +45,8 @@ public class UserController {
     private void setRolesService(RolesService rolesService){this.rolesService=rolesService;}
     @Autowired
     private void setPedidoService(PedidoService pedidoService){this.pedidoService=pedidoService;}
+    @Autowired
+    private void setEmpresaService(EmpresaService empresaService){this.empresaService = empresaService;}
     //@Autowired
     //private UserValidator userValidator;
 
@@ -64,9 +71,34 @@ public class UserController {
     @RequestMapping(value = "/admin/listar",method = RequestMethod.GET)
     public String root(Model model) {
         model.addAttribute("users", userService.listAllUser());
+        model.addAttribute("roles",rolesService.listAllOptions());
+        model.addAttribute("empresas", empresaService.listAllEmpresas());
+        model.addAttribute("CambiarRol",new Role());
+        model.addAttribute("miEmpresa",new Empresa());
         return "listar";
     }
-
+    @RequestMapping(value = "/admin/listar/set",method = RequestMethod.POST)
+    public String modificarUsuario(@ModelAttribute("newUser") int userid,@ModelAttribute("CambiarRol") int roleid
+    ,@ModelAttribute("miEmpresa") Empresa empresa)
+    {
+        Role role = rolesService.getRoleById(roleid);
+        User user=userService.findById(userid);
+        if(role.getName() != "EMP"){
+            Set<Role> lista = user.getRoles();
+            for(Role rolito: lista){
+                lista.remove(rolito);
+            }
+            lista.add(role);
+            user.setRoles(lista);
+            userRepository.save(user);
+        }
+        else if(empresa != null)
+        {
+            empresa.setUser(user);
+            empresaService.saveEmpresa(empresa);
+        }
+        return "redirect:/admin/listar";
+    }
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login(Model model, String error, String logout) {
         if (error != null)

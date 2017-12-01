@@ -30,6 +30,7 @@ public class UserServiceImpl implements UserService {
         List<Role> roles;
         roles = roleRepository.findAll();
         roles.remove(0);
+        roles.remove(0);
         user.setRoles(new HashSet<>(roles));
         userRepository.save(user);
     }
