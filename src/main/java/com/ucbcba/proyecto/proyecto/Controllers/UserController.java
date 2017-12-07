@@ -71,6 +71,25 @@ public class UserController {
         securityService.autologin(user.getEmail(), user.getPasswordConfirm());
         return "redirect:/bienvenidos";
     }
+
+    @RequestMapping(value = "/editUser", method = RequestMethod.GET)
+    public String editarUsuarioInit(Model model){
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        model.addAttribute("user", userService.findByEmail(name));
+        model.addAttribute("ciudades", ciudadService.listAllCiudades());
+        return "editarUsuario";
+    }
+
+    @RequestMapping(value = "/editUser", method = RequestMethod.POST)
+    public String editarUsuario(BindingResult bindingResult,Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("ciudades",ciudadService.listAllCiudades());
+            return "editarUsuario";
+        }
+        return "redirect:/bienvenidos";
+    }
+
     @RequestMapping(value = "/admin/listar",method = RequestMethod.GET)
     public String root(Model model) {
         model.addAttribute("users", userService.listAllUser());

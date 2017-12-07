@@ -1,12 +1,17 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Empresa</title>
     <link href="../static/css/listasForm.css" th:href="@{/css/listasForm.css}" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
+<div class="navbar">
+    <a class="navbartitle" href="/">Pizza Hunter</a>
+</div>
     <div class="container">
         <h1>Detalles de la empresa</h1>
         <div>
@@ -44,6 +49,12 @@
                         <textarea type="text" class="form-control" th:field="*{descripcion}"></textarea>
                         <span style="color: red;" th:if="${#fields.hasErrors('descripcion')}" th:errors="*{descripcion}">Error</span>
                     </div>
+                </div>
+                <div class="select">
+                    <label>Ciudad:</label>
+                    <select th:field="*{ciudad}">
+                        <option th:each="ciudad : ${ciudades}" th:value="${ciudad.idCiudad}" th:text="${ciudad.name}"></option>
+                    </select>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">URL Imagen:</label>

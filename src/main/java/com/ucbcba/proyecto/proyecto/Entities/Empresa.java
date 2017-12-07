@@ -30,10 +30,12 @@ public class Empresa {
     private Set<Option> Options;
     @OneToMany(mappedBy = "empresa")
     private Set<Pedido> Pedidos;
-
     @NotNull
     @ManyToOne
     private User user;
+    @ManyToOne
+    @JoinColumn(name = "IdCiudad")
+    private Ciudad ciudad;
 
     public Set<Pedido> getPedidos() {
         return Pedidos;
@@ -83,7 +85,6 @@ public class Empresa {
         this.descripcion = descripcion;
     }
 
-
     public void setIdEmpresa(Integer idEmpresa) {
         this.idEmpresa = idEmpresa;
     }
@@ -114,5 +115,13 @@ public class Empresa {
 
     public Direccion getDireccion() {
         return direccion;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
     }
 }

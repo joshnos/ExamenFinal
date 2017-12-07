@@ -2,6 +2,7 @@ package com.ucbcba.proyecto.proyecto.Controllers;
 
 import com.ucbcba.proyecto.proyecto.Entities.Direccion;
 import com.ucbcba.proyecto.proyecto.Entities.Empresa;
+import com.ucbcba.proyecto.proyecto.Services.CiudadService;
 import com.ucbcba.proyecto.proyecto.Services.DireccionService;
 import com.ucbcba.proyecto.proyecto.Services.EmpresaService;
 import com.ucbcba.proyecto.proyecto.Services.UserService;
@@ -23,6 +24,7 @@ public class EmpresaController {
     private EmpresaService empresaService;
     private UserService userService;
     private DireccionService direccionService;
+    private CiudadService ciudadService;
 
     @Autowired
     public void setDireccionService(DireccionService direccionService){this.direccionService=direccionService;}
@@ -33,10 +35,16 @@ public class EmpresaController {
     @Autowired
     public void setUserService(UserService userService){this.userService=userService;}
 
+    @Autowired
+    private void setCiudadService(CiudadService ciudadService){
+        this.ciudadService=ciudadService;
+    }
+
     @RequestMapping(value = "/admin/empresa", method = RequestMethod.POST)
     public String save(@Valid Empresa empresa, @ModelAttribute("longitud") Double longitud,@ModelAttribute("latitud") Double latitud, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             model.addAttribute("users",userService.listAllUser());
+            model.addAttribute("ciudades",ciudadService.listAllCiudades());
             return "empresaForm";
         }
         Direccion direccion = new Direccion();
@@ -58,6 +66,7 @@ public class EmpresaController {
     public String newEmpresa(Model model){
         model.addAttribute("empresa",new Empresa());
         model.addAttribute("users",userService.listAllUser());
+        model.addAttribute("ciudades",ciudadService.listAllCiudades());
         model.addAttribute("Midireccion", new Direccion());
         return "empresaForm";
     }
@@ -78,6 +87,7 @@ public class EmpresaController {
     public String editarEmpresa(@PathVariable Integer id, Model model){
         model.addAttribute("empresa",empresaService.getEmpresaById(id));
         model.addAttribute("users",userService.listAllUser());
+        model.addAttribute("ciudades",ciudadService.listAllCiudades());
         return "empresaForm";
     }
 

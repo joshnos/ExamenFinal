@@ -8,6 +8,10 @@
 </head>
 <body>
 
+<div class="navbar">
+    <a class="navbartitle" href="/">Pizza Hunter</a>
+</div>
+
 <div class="container">
     <div>
         <table class="table table-striped">
@@ -19,6 +23,7 @@
                 <th>Telefono</th>
                 <th>Descripcion</th>
                 <th>Calificacion</th>
+                <th>Ciudad</th>
                 <th>Imagen</th>
                 <th colspan="4" align="center">Acciones</th>
             </tr>
@@ -29,6 +34,7 @@
                 <td th:text="${empresa.telefono}">telefono</td>
                 <td th:text="${empresa.descripcion}">descripcion</td>
                 <td th:text="${empresa.calificacion}">calificacion</td>
+                <td th:each="ciudad : ${empresa.ciudad}" th:text="${ciudad.name}">ciudad</td>
                 <td><img class="info" th:src="${empresa.image}" alt="Imagen no establecida" width="50" height="50" /></td>
                 <td><a class="btn" th:href="${ '/admin/empresa/' + empresa.idEmpresa}">Ver</a></td>
                 <td><a class="btn" th:href="${ '/admin/empresa/eliminar/' + empresa.idEmpresa}">Eliminar</a></td>
