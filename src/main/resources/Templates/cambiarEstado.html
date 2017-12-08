@@ -19,6 +19,9 @@
                     </div>
                     <div class="Total"><label th:text="${pedido.precio + ' Bs'}">P/u:</label></div>
                 </div>
+                <div class="Estado">
+                    <td th:each="status : ${pedido.status}" th:text="${status.name}">Estado</td>
+                </div>
                 <label>Estado:</label>
                 <select name="status">
                     <option th:each="state : ${statuses}" th:value="${state.id}" th:text="${state.name}"></option>

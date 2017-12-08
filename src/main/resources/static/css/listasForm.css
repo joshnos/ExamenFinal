@@ -5,10 +5,30 @@ body{
    background-attachment: fixed;
    background-possition: center;
    background-color:#FAFAD2;
+   overflow-y: scroll;
+   overflow-x: hidden;
 }
 
+/* Navbar container */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
+  margin:none;
+}
+
+.navbartitle{
+   float: left;
+   display: block;
+   color: #f2f2f2;
+   text-align: center;
+   padding: 14px 16px;
+   text-decoration: none;
+   font-size: 17px;
+}
+
+
 .container{
-   position:fixed;
    width:35%;
    margin: 3% 32%;
    background:rgba(0,0,0,0.5);
