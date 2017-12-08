@@ -243,6 +243,7 @@ public class PedidoController {
 
     @RequestMapping(value = "/cambiar/new/{id}",method = RequestMethod.POST)
     public String Estadochange(@ModelAttribute("status")Integer statusId,@PathVariable Integer id, Model model){
+        pedidoService.listAllPedidos();
         Pedido pedido=pedidoService.getPedidoById(id);
         pedido.setStatus(statusService.getStatusById(statusId));
         pedidoService.savePedido(pedido);
