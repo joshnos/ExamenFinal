@@ -20,8 +20,8 @@ public class User {
     private String passwordConfirm;
     private String name;
     private Set<Role> roles;
-    private Ciudad ciudad;
     private Set<Pedido> pedidos;
+    private Ciudad ciudad;
 
     @ManyToOne
     @JoinColumn(name = "IdCiudad")
@@ -29,7 +29,7 @@ public class User {
         return ciudad;
     }
 
-    public void setCiudad(Ciudad ciudad1) {
+    public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
     }
 

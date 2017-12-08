@@ -8,6 +8,8 @@ import com.ucbcba.proyecto.proyecto.Entities.User;
 public interface UserService {
     void save(User user);
 
+    User edit(User user);
+
     Iterable<User> listAllUser();
 
     User findByEmail(String email);
