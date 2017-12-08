@@ -28,7 +28,7 @@
     </div>
 </div>
 <div class="container">
-    <form  th:action="@{/editUser}" th:object="${user}" method="post">
+    <form th:object="${user}" th:action="@{/User}" method="post">
         <div>
             <input type="text" th:field="*{email}" placeholder="E-mail" class="form-control" />
             <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></label>
@@ -39,7 +39,7 @@
         <div class="select">
             <label>Ciudad:</label>
             <select th:field="*{ciudad}">
-                <option th:each="ciudad : ${ciudades}" th:value="${ciudad.idCiudad}" th:text="${ciudad.name}"></option>
+                <option th:each="miCiudad : ${ciudades}" th:value="${miCiudad.idCiudad}" th:text="${miCiudad.name}"></option>
             </select>
         </div>
         <div>

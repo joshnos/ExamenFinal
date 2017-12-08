@@ -72,22 +72,26 @@ public class UserController {
         return "redirect:/bienvenidos";
     }
 
-    @RequestMapping(value = "/editUser", method = RequestMethod.GET)
+    @RequestMapping(value = "/User", method = RequestMethod.POST)
+    public String editarUsuario(BindingResult bindingResult,Model model) {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        String name = auth.getName();
+        User user = userService.findByEmail(name);
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("ciudades",ciudadService.listAllCiudades());
+            return "editarUsuario";
+        }
+        userRepository.save(user);
+        return "redirect:/bienvenidos";
+    }
+
+    @RequestMapping(value = "/User", method = RequestMethod.GET)
     public String editarUsuarioInit(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         model.addAttribute("user", userService.findByEmail(name));
         model.addAttribute("ciudades", ciudadService.listAllCiudades());
         return "editarUsuario";
-    }
-
-    @RequestMapping(value = "/editUser", method = RequestMethod.POST)
-    public String editarUsuario(BindingResult bindingResult,Model model) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("ciudades",ciudadService.listAllCiudades());
-            return "editarUsuario";
-        }
-        return "redirect:/bienvenidos";
     }
 
     @RequestMapping(value = "/admin/listar",method = RequestMethod.GET)
