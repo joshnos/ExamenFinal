@@ -32,7 +32,7 @@
         <div class="select">
             <label>Ciudad:</label>
             <select th:field="*{ciudad}">
-                <option th:each="miCiudad : ${ciudades}" th:value="${miCiudad.idCiudad}" th:text="${miCiudad.name}"></option>
+                <option th:each="MiCiudad : ${ciudades}" th:value="${MiCiudad.idCiudad}" th:text="${MiCiudad.name}"></option>
             </select>
         </div>
         <div>
