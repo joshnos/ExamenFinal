@@ -36,6 +36,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User edit(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
     public Iterable<User> listAllUser() {
         return userRepository.findAll();
     }
