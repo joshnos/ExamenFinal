@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8"/>
+    <title>Marker Labels</title>
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 50%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeyVAk4Z0xQCOIG7SNmjEbhFWKm35Z-7I"></script>
+    <script>
+      var lat;
+      var lng;
+      var MiEmpresa = { lat: -17.372822, lng: -66.156992 };
+      var myLatLng = MiEmpresa;
+      var marker;
+      function initialize() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 18,
+          center: MiEmpresa
+        });
+        directionsDisplay.setMap(map);
+
+        calculateAndDisplayRoute(directionsService, directionsDisplay);
+        google.maps.event.addListener(map, 'click', function(event) {
+          myLatLng = event.latLng;
+          lat = myLatLng.lat();
+          lng = myLatLng.lng();
+          document.getElementById('lat').value = lat;
+          document.getElementById('lng').value = lng;
+          calculateAndDisplayRoute(directionsService, directionsDisplay);
+        });
+      }
+
+      function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+          origin: MiEmpresa,
+          destination: myLatLng,
+          travelMode: 'DRIVING'
+        }, function(response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          } else {
+            window.alert('Directions request failed due to ' + status);
+          }
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+</head>
+<body>
+<div id="map"></div>
+<div>
+    <form th:action="@{/probarme}" method="post">
+        <input id="lat" type="text" name="lat"/>
+        <input id="lng" type="text" name="lng"/>
+        <div>
+            <button type="submit">Guardar Cambios</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>

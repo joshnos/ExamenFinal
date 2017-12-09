@@ -26,8 +26,8 @@ public class  Pedido {
     @OneToMany(mappedBy = "pedido")
     private Set<Opcion_Pedido> opcion_pedidos = new HashSet<>();
     private boolean Estado;
-    private String direccion;
-
+    @ManyToOne
+    private Direccion direccion;
     @ManyToOne
     private Status status;
 
@@ -67,11 +67,11 @@ public class  Pedido {
         this.precio = precio;
     }
 
-    public String getDireccion() {
+    public Direccion getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
+    public void setDireccion(Direccion direccion) {
         this.direccion = direccion;
     }
 

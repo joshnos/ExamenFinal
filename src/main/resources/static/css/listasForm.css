@@ -98,3 +98,13 @@ label, span{
     margin: 8px 6%;
     color:white;
 }
+
+#map{
+   position:relative;
+   background:rgba(0,0,0,0.5);
+   width:425px;
+   max-width:425px;
+   height:300px;
+   max-height:300px;
+   left:50px;
+}

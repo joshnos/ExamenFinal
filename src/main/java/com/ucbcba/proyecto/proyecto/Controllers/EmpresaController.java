@@ -41,7 +41,7 @@ public class EmpresaController {
     }
 
     @RequestMapping(value = "/admin/empresa", method = RequestMethod.POST)
-    public String save(@Valid Empresa empresa, @ModelAttribute("longitud") Double longitud,@ModelAttribute("latitud") Double latitud, BindingResult bindingResult, Model model){
+    public String save(@Valid Empresa empresa, @ModelAttribute("lng") Double longitud,@ModelAttribute("lat") Double latitud, BindingResult bindingResult, Model model){
         if(bindingResult.hasErrors()){
             model.addAttribute("users",userService.listAllUser());
             model.addAttribute("ciudades",ciudadService.listAllCiudades());
@@ -88,6 +88,8 @@ public class EmpresaController {
         model.addAttribute("empresa",empresaService.getEmpresaById(id));
         model.addAttribute("users",userService.listAllUser());
         model.addAttribute("ciudades",ciudadService.listAllCiudades());
+        model.addAttribute("lat",empresaService.getEmpresaById(id).getDireccion().getLatitud());
+        model.addAttribute("lng",empresaService.getEmpresaById(id).getDireccion().getLongitud());
         return "empresaForm";
     }
 
