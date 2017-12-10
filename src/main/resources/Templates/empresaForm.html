@@ -7,6 +7,50 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeyVAk4Z0xQCOIG7SNmjEbhFWKm35Z-7I"></script>
+    <script th:inline="javascript">
+      var lat;
+      var lng;
+      var myLatLng;
+      var marker;
+      function initialize() {
+        var MiDireccion = new google.maps.LatLng([[${lat}]], [[${lng}]]);
+        var cochabamba = { lat: -17.372822, lng: -66.156992 };
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 15,
+          center: cochabamba
+        });
+
+        // This event listener calls addMarker() when the map is clicked.
+        google.maps.event.addListener(map, 'click', function(event) {
+          myLatLng = event.latLng;
+          addMarker(event.latLng, map);
+        });
+
+        addMarker(MiDireccion,map);
+      }
+
+      // Adds a marker to the map.
+      function addMarker(location, map) {
+        lat = location.lat();
+        lng = location.lng();
+        document.getElementById('lat').value = lat;
+        document.getElementById('lng').value = lng;
+        if(marker==null){
+          marker = new google.maps.Marker({
+          position: location,
+          label: 'E',
+          map: map
+          });
+        }
+        else{
+          marker.setPosition(location);
+          map.panTo(map);
+        }
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 </head>
 <body>
 <div class="navbar">
@@ -24,12 +68,11 @@
                         <span style="color: red;" th:if="${#fields.hasErrors('nombre')}" th:errors="*{nombre}">Error</span>
                     </div>
                 </div>
+                <label class="col-sm-2 control-label">Direccion:</label>
+                <div id="map"></div>
                 <div class="form-group">
-                    <label class="col-sm-2 control-label">Direccion:</label>
-                    <div class="col-sm-10">
-                        <input type="text" name="latitud" placeholder="latitud"/>
-                        <input type="text" name="longitud" placeholder="longitud"/>
-                    </div>
+                    <input id="lat" type="hidden" name="lat"/>
+                    <input id="lng" type="hidden" name="lng"/>
                 </div>
                 <div class="form-group">
                     <label class="col-sm-2 control-label">Telefono:</label>

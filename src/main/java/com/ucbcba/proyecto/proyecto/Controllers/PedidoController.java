@@ -22,6 +22,11 @@ public class PedidoController {
     private Opcion_PedidoService opcion_pedidoService;
     private UserService userService;
     private StatusService statusService;
+    private DireccionService direccionService;
+    @Autowired
+    public void setDireccionService(DireccionService direccionService){
+        this.direccionService=direccionService;
+    }
     @Autowired
     public void setUserService(UserService userService){
         this.userService=userService;
@@ -182,6 +187,14 @@ public class PedidoController {
         }
         model.addAttribute("empresa",pedidoactual.getEmpresa());
         model.addAttribute("pedido",pedidoactual);
+        if(pedidoactual.getDireccion()==null){
+            model.addAttribute("lat",0.0);
+            model.addAttribute("lng",0.0);
+        }
+        else{
+            model.addAttribute("lat",pedidoactual.getDireccion().getLatitud());
+            model.addAttribute("lng",pedidoactual.getDireccion().getLongitud());
+        }
         return "datosPedido";
     }
 
@@ -201,10 +214,15 @@ public class PedidoController {
     }
 
     @RequestMapping(value = "/pagar",method = RequestMethod.POST)
-    public String pagar(@ModelAttribute("Id_Pedido")Integer Id_Pedido,@ModelAttribute("direccion")String direccion) {
+    public String pagar(@ModelAttribute("Id_Pedido")Integer Id_Pedido,@ModelAttribute("lng") Double longitud,@ModelAttribute("lat") Double latitud) {
         Pedido pedido = pedidoService.getPedidoById(Id_Pedido);
+        Direccion direccion = new Direccion();
+        direccion.setLatitud(latitud);
+        direccion.setLongitud(longitud);
+        direccionService.saveDireccion(direccion);
         pedido.setDireccion(direccion);
         pedido.setEstado(false);
+        pedido.setStatus(statusService.getStatusById(1));
         pedidoService.savePedido(pedido);
         return "redirect:/bienvenidos";
     }
@@ -243,6 +261,7 @@ public class PedidoController {
 
     @RequestMapping(value = "/cambiar/new/{id}",method = RequestMethod.POST)
     public String Estadochange(@ModelAttribute("status")Integer statusId,@PathVariable Integer id, Model model){
+        pedidoService.listAllPedidos();
         Pedido pedido=pedidoService.getPedidoById(id);
         pedido.setStatus(statusService.getStatusById(statusId));
         pedidoService.savePedido(pedido);

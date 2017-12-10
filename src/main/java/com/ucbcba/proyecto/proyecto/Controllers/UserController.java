@@ -72,26 +72,22 @@ public class UserController {
         return "redirect:/bienvenidos";
     }
 
-    @RequestMapping(value = "/User", method = RequestMethod.POST)
-    public String editarUsuario(BindingResult bindingResult,Model model) {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        String name = auth.getName();
-        User user = userService.findByEmail(name);
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("ciudades",ciudadService.listAllCiudades());
-            return "editarUsuario";
-        }
-        userRepository.save(user);
-        return "redirect:/bienvenidos";
-    }
-
-    @RequestMapping(value = "/User", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String editarUsuarioInit(Model model){
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         model.addAttribute("user", userService.findByEmail(name));
         model.addAttribute("ciudades", ciudadService.listAllCiudades());
-        return "editarUsuario";
+        return "registration";
+    }
+
+    @RequestMapping(value = "/User", method = RequestMethod.POST)
+    public String editarUsuario(BindingResult bindingResult,Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("ciudades",ciudadService.listAllCiudades());
+            return "editarUsuario";
+        }
+        return "redirect:/bienvenidos";
     }
 
     @RequestMapping(value = "/admin/listar",method = RequestMethod.GET)
@@ -162,5 +158,11 @@ public class UserController {
         model.addAttribute("empresa",empresaMia);
         model.addAttribute("statuses",statusService.listAllOptions());
         return "CambiarEstado";
+    }
+
+    @RequestMapping(value = "/AdminEmp/mapa/{id}",method = RequestMethod.GET)
+    public String mapa(@PathVariable Integer id,Model model) {
+        model.addAttribute("pedido",pedidoService.getPedidoById(id));
+        return "mostrarMapa";
     }
 }

@@ -130,11 +130,11 @@ h2{
 
 .direccion{
    position:absolute;
-   top:60%;
+   top:58%;
    width:75%;
    max-width:75%;
-   height:30%;
-   max-height:30%;
+   height:39%;
+   max-height:39%;
    margin:10px 10px;
    background:rgba(0,0,0,0.5);
    border-radius:3%;
@@ -274,4 +274,19 @@ button:hover {
 
 .boton:hover{
    opacity: 0.8;
+}
+
+#map{
+   position:relative;
+   background:rgba(0,0,0,0.5);
+   width:915px;
+   max-width:915px;
+   height:172px;
+   max-height:172px;
+   left:112px;
+}
+
+h3{
+   text-align:center;
+   text-margin:1px 1px;
 }
