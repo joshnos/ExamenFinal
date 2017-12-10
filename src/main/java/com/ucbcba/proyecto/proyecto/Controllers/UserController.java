@@ -159,4 +159,10 @@ public class UserController {
         model.addAttribute("statuses",statusService.listAllOptions());
         return "CambiarEstado";
     }
+
+    @RequestMapping(value = "/AdminEmp/mapa/{id}",method = RequestMethod.GET)
+    public String mapa(@PathVariable Integer id,Model model) {
+        model.addAttribute("pedido",pedidoService.getPedidoById(id));
+        return "mostrarMapa";
+    }
 }

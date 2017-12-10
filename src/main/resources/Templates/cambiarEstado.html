@@ -5,35 +5,40 @@
     <link href="../static/css/pedidosEmp.css" th:href="@{/css/pedidosEmp.css}" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDeyVAk4Z0xQCOIG7SNmjEbhFWKm35Z-7I"></script>
 </head>
 <body>
 <div class="container">
     <h2 class="title" th:text="${empresa.nombre}">nombre</h2>
-    <div class="select" th:each="pedido: ${pedidos}">
+    <div class="group" th:each="pedido: ${pedidos}" th:if="${pedido.Estado}==false">
         <form class="form-horizontal" th:action="${'/cambiar/new/'+ pedido.id}" method="post">
-            <div class="group" align="center" color="white">
+            <div color="white">
                 <div class="inf">
-                    <div class="data"><label th:text="${'Pedido nro: '+pedido.id}"></label></div>
-                    <div th:each="op: ${pedido.opcion_pedidos}">
-                        <label th:text="${op.option.name+': '+op.option.price+' Bs'}"></label>
+                    <div class="data"><label th:text="${'Pedido nro: '+pedido.id}">Nro</label></div>
+                    <div class="data" th:each="op: ${pedido.opcion_pedidos}">
+                        <label th:text="${op.option.name+': '+op.option.price+' Bs'}">Precio</label>
                     </div>
-                    <div class="Total"><label th:text="${pedido.precio + ' Bs'}">P/u:</label></div>
+                    <div class="data"><label th:text="${'Total: ' + pedido.precio + ' Bs'}">P/u:</label></div>
+                    <div class="data">
+                        <label>Estado:</label>
+                        <select name="status">
+                            <option th:each="state : ${statuses}" th:if="${state}==${pedido.status}" th:value="${state.id}" th:text="${state.name}" selected="selected"></option>
+                            <option th:each="state : ${statuses}" th:if="${state}!=${pedido.status}" th:value="${state.id}" th:text="${state.name}">Estado</option>
+                        </select>
+                    </div>
                 </div>
-                <div class="Estado">
-                    <td th:each="status : ${pedido.status}" th:text="${status.name}">Estado</td>
-                </div>
-                <label>Estado:</label>
-                <select name="status">
-                    <option th:each="state : ${statuses}" th:value="${state.id}" th:text="${state.name}"></option>
-                </select>
                 <div class="row">
-                    <button type="submit" class="btn btn-default">Submit</button>
+                    <button type="submit" class="submit">Cambiar Estado</button>
                 </div>
             </div>
         </form>
+        <div id="map">
+            <a class="boton" th:href="${'/AdminEmp/mapa/' + pedido.id}">Mostrar ruta</a>
+        </div>
     </div>
 </div>
 
+<a class="atras" href="/bienvenidos">Atras</a>
 
 </body>
 </html>
