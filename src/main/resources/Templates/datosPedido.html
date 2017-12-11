@@ -59,7 +59,7 @@
 <div class="navbar">
     <a class="navbartitle" href="/">Pizza Hunter</a>
     <div class="dropdown">
-        <button class="dropbtn" th:text="${user.name}"></button>
+        <button class="dropbtn" th:text="${user.name}">Usuario</button>
         <div class="dropdown-content">
             <div th:each="role : ${user.roles}" >
                 <div th:if="${role.name} == 'ADMIN'">
@@ -77,7 +77,7 @@
 </div>
 
 <div class="box-datos">
-    <h2>Detalles del carrito</h2>
+    <h3>Detalles del carrito</h3>
     <div class="datos">
         <div class="for" th:each="op: ${pedido.opcion_pedidos}">
             <form th:action="${'/borrar/'+op.Id}" method="post">

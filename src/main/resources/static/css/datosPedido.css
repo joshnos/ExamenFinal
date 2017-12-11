@@ -37,7 +37,7 @@ body{
   outline: none;
   color: white;
   padding: 14px 16px;
-  min-width: 160px;
+  width: 160px;
   background-color: inherit;
 }
 
@@ -90,9 +90,9 @@ body{
    position:fixed;
    width:75%;
    max-width:75%;
-   height:50%;
-   max-height:50%;
-   margin:10px 10px;
+   height:48%;
+   max-height:48%;
+   margin: 0.2% 1%;
    background:rgba(0,0,0,0.5);
    border-radius:3%;
    color:white;
@@ -100,13 +100,13 @@ body{
 
 h2{
    text-align:center;
-   text-margin:5px 5px;
+   text-margin:1% 1%;
 }
 
 .datos{
    position:fixed;
-   width:1100px;
-   max-width:1100px;
+   width:70%;
+   max-width:70%;
    height:30%;
    max-height:30%;
    margin:10px 25px;
@@ -133,9 +133,9 @@ h2{
    top:58%;
    width:75%;
    max-width:75%;
-   height:39%;
-   max-height:39%;
-   margin:10px 10px;
+   height:41%;
+   max-height:41%;
+   margin:0% 1%;
    background:rgba(0,0,0,0.5);
    border-radius:3%;
    color:white;
@@ -153,11 +153,13 @@ h2{
 button.submit {
     background-color: #c61114;
     color: white;
-    padding: 14px 25px;
-    margin: 8px 10%;
+    padding: 1% 5%;
+    margin: 0.7% 7.1%;
     border: none;
     cursor: pointer;
-    width: 80%;
+    position:fixed;
+    bottom: 1%;
+    width: 60%;
 }
 
 /* Add a hover effect for buttons */
@@ -172,7 +174,7 @@ button:hover {
     padding: 5px 5px;
     border: none;
     cursor: pointer;
-    width: 30px;
+    width: 4%;
 }
 
 .btn-modificar{
@@ -201,29 +203,29 @@ button:hover {
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
-    width:40px;
-    max-width:50px;
+    width:4%;
+    max-width:4%;
 }
 
 .Total{
    position:relative;
    top:65%;
-   width:1100px;
-   max-width:1100px;
-   height:10%;
-   max-height:10%;
-   margin:10px 25px;
+   width:100%;
+   max-width:100%;
+   height:2%;
+   max-height:2%;
+   margin:0% 3%;
    color:white;
 }
 
 .titletotal{
    float:left;
-   margin:10px 10px;
+   margin:1% 1%;
 }
 
 .total{
    float:right;
-   margin:10px 70px;
+   margin:1% 8%;
 }
 
 .btn-borrar{
@@ -277,12 +279,12 @@ button:hover {
 }
 
 #map{
-   position:relative;
+   position:fixed;
    background:rgba(0,0,0,0.5);
-   width:915px;
-   max-width:915px;
-   height:172px;
-   max-height:172px;
+   width:60%;
+   max-width:60%;
+   height:22%;
+   max-height:22%;
    left:112px;
 }
 
