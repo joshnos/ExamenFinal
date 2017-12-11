@@ -16,10 +16,12 @@
         <input type="hidden"  name ="newUser" th:value = "${user.id}"/>
     <div class="select">
         <label color="white">Rol:</label>
+        <div th:each="rolito : ${user.roles}">
         <select name="CambiarRol">
-            <option th:each="role : ${user.roles}" th:value="${role.id}" th:text="${role.name}">op1</option>
-            <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}">op2</option>
+            <option th:each="role : ${roles}" th:if="${role}==${rolito}" th:value="${role.id}" th:text="${role.name}" selected="selected"></option>
+            <option th:each="role : ${roles}" th:if="${role}!=${rolito}" th:value="${role.id}" th:text="${role.name}">op2</option>
         </select>
+        </div>
         <button type="Submit">Cambiar</button>
     </div>
     </form>
