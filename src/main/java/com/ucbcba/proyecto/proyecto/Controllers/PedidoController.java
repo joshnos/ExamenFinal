@@ -150,6 +150,7 @@ public class PedidoController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         User usuario=userService.findByEmail(name);
+
         Pedido pedidoactual=null;
         for (Pedido pedido: pedidoService.listAllPedidos()){
             if(pedido.getUser()==usuario)

@@ -32,7 +32,7 @@
 
 <div class="container">
     <h2 class="title">Restaurantes Disponibles</h2>
-    <div  th:each="empresa : ${empresas}">
+    <div  th:each="empresa : ${empresas}" th:if="${empresa.ciudad}==${user.ciudad}">
         <a th:href="${'/pedido/'+ empresa.idEmpresa}">
             <div class="group" align="center">
                 <img class="info" src="http://iescarrenomiranda.es/principal/wp-content/uploads/2015/06/ciclos-formativos.jpg" th:src="${empresa.image}" alt="No tiene imagen"/>
