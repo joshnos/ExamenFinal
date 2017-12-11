@@ -29,6 +29,10 @@
 </div>
 <div class="container">
     <form  th:action="@{/editUser}" th:object="${user}" method="post">
+        <input type="hidden" th:field="*{id}" th:value="${user.id}"/>
+        <input type="hidden" th:field="*{password}" th:value="${user.password}"/>
+        <input type="hidden" th:field="*{passwordConfirm}" th:value="${user.passwordConfirm}"/>
+        <input type="hidden" th:field="*{roles}" th:value="${user.roles}"/>
         <div>
             <input type="text" th:field="*{email}" placeholder="E-mail" class="form-control" />
             <label th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="validation-message"></label>
