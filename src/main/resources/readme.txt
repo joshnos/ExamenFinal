@@ -3,18 +3,32 @@ Antes de iniciar el programa crear una base de datos llamada: login
 :  AMINISTRADOR :
 .................
 Correo: jorge@admin.com
-Contraseña:1111
+Contraseï¿½a:1111
 ............
 :  USUARIO :
 ............
 Correo: carlos@user.com
-Contraseña:2222
+Contraseï¿½a:2222
 Correo: fernanda@user.com
-Contraseña:2222
+Contraseï¿½a:2222
+Correo: maria@user.com
+Contraseï¿½a:2222
 .............
 :  EMPRESAS :
 .............
 Correo: elis@restaurante.com
-Contraseña:3333
+Contraseï¿½a:3333
 Correo: napolis@restaurante.com
-Contraseña:3333
+Contraseï¿½a:3333
+
+
+INFORMACION RELEVANTE:
+
+Carlos es usuario de Cochabamba
+Fernanda es usuario de La Paz
+Maria es usuario de Tarija
+
+ELIS empresa en La Paz
+NAPOLIS empreda en Cochabambam
+
+TARIJA NO TIENE NINGUN RESTAURANTE REGISTRADO
