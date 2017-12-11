@@ -2,23 +2,23 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Listar</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+    <link href="../static/css/listarUsuarios.css" th:href="@{/css/listarUsuarios.css}" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body  th:style="'background-image: url('+@{/imagenes/fondoPizza.jpg}+'); background-repeat: no-repeat;
-background-size:100% 100%; background-attachment: fixed; background-possition: center;  background-color:#FAFAD2;'">
-<div th:each="user:${users}">
+<body>
+<div class="cajita">
+<div class="tarjetitas" th:each="user:${users}">
     <form th:action="@{/admin/listar/set}" method="post">
-    <div><font color="white" size="4" th:text="${'          Id: ' +user.id}"></font></div>
-    <div><font color="white" size="4" th:text="${'          Email: ' + user.email}"></font></div>
-    <div><font color="white" size="4" th:text="${'          Nombre: ' + user.name}"></font></div>
+    <div><font color="white" size="4" th:text="${'          Id: ' +user.id}">id</font></div>
+    <div><font color="white" size="4" th:text="${'          Email: ' + user.email}">email</font></div>
+    <div><font color="white" size="4" th:text="${'          Nombre: ' + user.name}">name</font></div>
         <input type="hidden"  name ="newUser" th:value = "${user.id}"/>
     <div class="select">
         <label color="white">Rol:</label>
         <select name="CambiarRol">
-            <option th:each="role : ${user.roles}" th:value="${role.id}" th:text="${role.name}"></option>
-            <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}"></option>
+            <option th:each="role : ${user.roles}" th:value="${role.id}" th:text="${role.name}">op1</option>
+            <option th:each="role : ${roles}" th:value="${role.id}" th:text="${role.name}">op2</option>
         </select>
         <button type="Submit">Cambiar</button>
     </div>
@@ -30,6 +30,8 @@ background-size:100% 100%; background-attachment: fixed; background-possition: c
         <button type="Submit">FINISH x 2</button>
     </form> -->
 </div>
+</div>
+<a class="btn" href="/bienvenidos">Atras</a>
 
 </body>
 </html>
