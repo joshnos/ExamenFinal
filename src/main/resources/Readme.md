@@ -34,7 +34,7 @@ Antes de iniciar el programa debe existir una base de datos llamada: login
 
   ELIS empresa en La Paz
 
-  NAPOLIS empresa en Cochabambam
+  NAPOLIS empresa en Cochabamba
 
 
   TARIJA NO TIENE NINGUN RESTAURANTE REGISTRADO
