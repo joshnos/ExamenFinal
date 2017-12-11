@@ -279,13 +279,13 @@ button:hover {
 }
 
 #map{
-   position:fixed;
+   position:absolute;
    background:rgba(0,0,0,0.5);
-   width:60%;
-   max-width:60%;
-   height:22%;
-   max-height:22%;
-   left:112px;
+   width:80%;
+   max-width:80%;
+   height:60%;
+   max-height:60%;
+   left:9.4%;
 }
 
 h3{
