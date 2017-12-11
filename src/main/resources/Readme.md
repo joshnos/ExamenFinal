@@ -1,6 +1,6 @@
 ﻿# Portal de Pedido de Pizza
 
-##Requisitos
+## Requisitos
 
 Antes de iniciar el programa debe existir una base de datos llamada: login
 
@@ -24,12 +24,13 @@ Antes de iniciar el programa debe existir una base de datos llamada: login
 	   Contraseña:3333
 	   Correo: napolis@restaurante.com
 	   Contraseña:3333
-##Informacion Relevante
+## Informacion Relevante
+
   Carlos es usuario de Cochabamba
 
   Fernanda es usuario de La Paz
-Maria es usuario de Tarija
 
+  Maria es usuario de Tarija
 
   ELIS empresa en La Paz
 
