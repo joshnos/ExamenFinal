@@ -10,8 +10,8 @@ body{
 
 .title{
    position:fixed;
-   width:150px;
-   height:150px;
+   width:10%;
+   height:20%;
    border-radius:5px;
 }
  .box{
@@ -27,28 +27,28 @@ body{
 
 .TitleData{
     position:absolute;
-    left:200px;
-    width:300px;
-    max-width:300px;
-    height:150px;
-    max-height:150px;
+    left:20%;
+    width:30%;
+    max-width:30%;
+    height:15%;
+    max-height:15%;
     color:white;
-    font-size:15px;
-    line-height:15px;
-    margin:20px;
+    font-size:20px;
+    line-height:25%;
+    margin:3%;
 }
 
 .MainData{
     position:absolute;
-    left:550px;
-    width:500px;
-    max-width:500px;
-    height:150px;
-    max-height:150px;
+    left:35%;
+    width:60%;
+    max-width:60%;
+    height:70%;
+    max-height:70%;
     color:white;
     font-size:15px;
-    line-height:15px;
-    margin:20px;
+    line-height:30%;
+    margin:2%;
 }
 
 .CajaPedido{
@@ -65,22 +65,22 @@ body{
 
 .Cajitas{
     float:left;
-    left:50px;
+    left:5%;
     background:rgba(0,0,0,0.5);
-    width:300px;
-    max-width:300px;
-    height:350px;
-    max-height:350px;
+    width:30%;
+    max-width:30%;
+    height:35%;
+    max-height:35%;
     color:white;
     font-size:15px;
-    line-height:15px;
-    border-radius:5px;
-    margin:20px 35px;
+    line-height:5%;
+    border-radius:5%;
+    margin:2% 3%;
 }
 
 .ImgOption{
     position:relative;
-       width:170px;
+       width:60%;
        height:170px;
        border-radius:50%;
        margin: auto;
@@ -103,14 +103,14 @@ body{
 .MiPedido{
     position:relative;
     background:rgba(0,0,0,0.5);
-    width:285px;
-    max-width:285px;
-    height:250px;
-    max-height:250px;
+    width:98%;
+    max-width:98%;
+    height:69%;
+    max-height:69%;
     color:white;
     font-size:15px;
-    line-height:15px;
-    border-radius:5px;
+    line-height:5%;
+    border-radius:5%;
     overflow-y: scroll;
     overflow-x: hidden;
 }
@@ -119,14 +119,15 @@ body{
     float:right;
     background-color: #c61114;
     color: white;
-    padding: 5px 5px;
+    padding: 1% 1%;
+    margin: 1% 1%;
     border: none;
     cursor: pointer;
-    width: 30px;
+    width: 10%;
 }
 .Total{
    position:relative;
-   left:10px;
+   left:1%;
    color:white;
 }
 
@@ -140,32 +141,34 @@ h1, h2{
 
 .price{
     position:relative;
-    left:200px;
-    padding:0 10px;
+    left:80%;
+    padding:4% 4%;
 }
 
 .spancito{
+
     position:relative;
-    left:160px;
+    left:65%;
     relative:right;
-    padding:0 10px;
+    padding:0 1%;
 }
 
 .opciones{
-    padding:10px;
+    padding:5%;
 }
 .data{
+
     border-bottom-style: solid;
     border-color: white;
     border-width: 1px;
-    padding:10px 10px;
+    padding:7% 7%;
 }
 
 .submit {
     background-color: #c61114;
     color: white;
-    padding: 14px 20px;
-    margin: 8px 10%;
+    padding: 1% 2%;
+    margin: 0.8% 10%;
     border: none;
     cursor: pointer;
     width: 80%;
@@ -190,7 +193,7 @@ h1, h2{
     background-color: #c61114; /* Red */
     border: none;
     color: white;
-    padding: 2px 5px;
+    padding: 0.2% 0.5%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -303,13 +306,13 @@ h1, h2{
 
 .button{
 position:absolute;
-top:620px;
+top:70%;
 left:1400px;
     background-color: #c61114; /* Red */
-    margin:25px 20px;
+    margin:2% 2%;
     border: none;
     color: white;
-    padding: 15px 40px;
+    padding: 1% 4%;
     text-align: center;
     text-decoration: none;
     display: inline-block;

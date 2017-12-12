@@ -42,12 +42,12 @@
                 <button class="btn-borrar" type="submit">
                     <i class="fa fa-trash" aria-hidden="true"></i>
                 </button>
-                <div class="data"><label th:text="${op.option.name+' (x'+op.cantidad+')'}"></label></div>
-                <div class="price"><label th:text="${op.option.price + 'Bs' }"></label></div>
+                <div class="data"><label th:text="${op.option.name+' (x'+op.cantidad+')'}">opcion</label></div>
+                <div class="price"><label th:text="${op.option.price + 'Bs' }"></label> precio</div>
             </form>
         </div>
     </div>
-    <div class="Total">Total: <span class="spancito" th:text="${pedido.precio + 'Bs'}"></span></div>
+    <div class="Total">Total: <span class="spancito" th:text="${pedido.precio + 'Bs'}">TOTAL</span></div>
     <a class="btn-pagar" href="/continuar"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Continuar</a>
 </div>
 

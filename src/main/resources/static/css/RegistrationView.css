@@ -90,7 +90,7 @@ body{
 .container{
    position:fixed;
    width:35%;
-   margin: 5% 32%;
+   margin: 1% 32%;
    background:rgba(0,0,0,0.5);
 }
 
@@ -103,8 +103,8 @@ h1{
 /* Full-width inputs */
 input[type=text], input[type=password] {
     width: 80%;
-    padding: 12px 20px;
-    margin: 8px 10%;
+    padding: 2% 2%;
+    margin: 2% 10%;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -114,7 +114,7 @@ input[type=text], input[type=password] {
 button {
     background-color: #c61114;
     color: white;
-    padding: 14px 20px;
+    padding: 2% 5%;
     margin: 8px 10%;
     border: none;
     cursor: pointer;
@@ -128,7 +128,7 @@ button:hover {
 
 /* Add padding to containers */
 .container {
-    padding: 16px;
+    padding: 1%;
 }
 
 label{
@@ -140,7 +140,7 @@ label{
 
 .select{
     width: 80%;
-    padding: 12px 20px;
+    padding: 2% 4%;
     margin: 8px 6%;
     color:white;
 }
