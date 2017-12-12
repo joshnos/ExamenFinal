@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Pais</title>
+    <link href="../static/css/listasView.css" th:href="@{/css/listasView.css}" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="navbar">
+    <a class="navbartitle" href="/">Pizza Hunter</a>
+</div>
+<div class="container">
+    <div>
+        <table class="table table-striped">
+            <caption><h1>Lista de Restaurantes</h1></caption>
+            <tr class="cabecera">
+                <th>Id</th>
+                <th>Nombre</th>
+            </tr>
+            <tr class="datos" th:each="pais : ${paises}">
+                <td th:text="${pais.idPais}">Id</td>
+                <td th:text="${pais.name}">nombre</td>
+                <td><a class="btn" th:href="${ '/admin/pais/' + pais.idPais}">Ver</a></td>
+                <td><a class="btn" th:href="${ '/admin/pais/eliminar/' + pais.idPais}">Eliminar</a></td>
+                <td><a class="btn" th:href="${ '/admin/pais/editar/' + pais.idPais}">Editar</a></td>
+            </tr>
+        </table>
+    </div>
+</div>
+<a class="btnl" href="/bienvenidos">Atras</a>
+<a class="btnr" href="/admin/pais/new">Nuevo</a>
+</body>
+</html>
