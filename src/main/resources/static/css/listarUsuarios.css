@@ -13,30 +13,32 @@ body{
   left:100px;
   width:85%;
   max-width:85%;
-  height:550px;
-  max-height:550px;
-  padding:10px 10px;
+  height:90%;
+  max-height:90%;
+  padding:0.5% 1%;
   background:rgba(0,0,0,0.5);
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .tarjetitas{
    float:left;
    width:20%;
    max-width:20%;
-   height:30%;
-   max-height:30%;
+   height:25%;
+   max-height:25%;
    border-radius:3%;
-   padding:10px 10px;
-   margin:10px 10px;
-   background:rgba(192,57,43,0.5);
+   padding:1% 1%;
+   margin:1% 1%;
+   background:rgba(0,0,0,0.5);
 }
 a.btn{
     position:absolute;
     top:85%;
     background-color: #c61114; /* Red */
-    margin:5px 5px;
+    margin:0.4% 0.4%;
     border: none;
     color: white;
-    padding: 15px 25px;
+    padding: 1% 1.5%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
