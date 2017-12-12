@@ -43,8 +43,8 @@ h1{
 /* Full-width inputs */
 input[type=text], input[type=password] {
     width: 80%;
-    padding: 12px 20px;
-    margin: 8px 10%;
+    padding: 1.5% 2%;
+    margin: 2.5% 10%;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -52,21 +52,21 @@ input[type=text], input[type=password] {
 
 textarea{
     width: 80%;
-    padding: 12px 20px;
-    margin: 8px 10%;
+    padding: 7% 2%;
+    margin: 2.5% 10%;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
     resize:vertical;
-    min-height:110px;
-    max-height:110px;
+    min-height:25%;
+    max-height:25%;
 }
 /* Set a style for all buttons */
 button {
     background-color: #c61114;
     color: white;
-    padding: 14px 20px;
-    margin: 8px 10%;
+    padding: 3.5% 4%;
+    margin: 2.5% 10%;
     border: none;
     cursor: pointer;
     width: 80%;
@@ -79,7 +79,7 @@ button:hover {
 
 /* Add padding to containers */
 .container {
-    padding: 16px;
+    padding: 2%;
 }
 
 label, span{
@@ -88,23 +88,24 @@ label, span{
     font-weight:bold;
     text-align:center;
     width: 80%;
-    padding: 12px 20px;
-    margin: 8px 6%;
+    padding: 3% 3.5%;
+    margin: 2% 6%;
 }
 
 .select{
     width: 80%;
-    padding: 12px 20px;
-    margin: 8px 6%;
+    padding: 3% 3.5%;
+    margin: 2% 6%;
     color:white;
 }
 
 #map{
    position:relative;
    background:rgba(0,0,0,0.5);
-   width:425px;
-   max-width:425px;
+   width:80%;
+   max-width:80%;
    height:300px;
    max-height:300px;
-   left:50px;
+   left:10%;
 }
+
