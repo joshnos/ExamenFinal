@@ -44,7 +44,7 @@ table {
 td, th {
     border: 1px solid #000;
     text-align: left;
-    padding: 8px;
+    padding: 1%;
 }
 
 .cabecera{
@@ -68,7 +68,7 @@ td, th {
     background-color: #c61114; /* Red */
     border: none;
     color: white;
-    padding: 2px 5px;
+    padding: 0.1% 0.5%;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -86,7 +86,7 @@ td, th {
     background-color: #c61114; /* Red */
         border: none;
         color: white;
-        padding: 2px 5px;
+        padding: 0.1% 0.5%;
         text-align: center;
         text-decoration: none;
         display: inline-block;
